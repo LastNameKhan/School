@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      #search {
+        text-align: center;
+        margin: auto;
+      }
+      #moviename {
+        font-size: 20px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="search">
+      <input
+        type="text"
+        id="moviename"
+        placeholder="Enter the Movie name here"
+      />
+    </div>
+    <div id="display"></div>
+  </body>
+</html>
+<script>
+    // let url = "http://www.omdbapi.com/?i=tt3896198&apikey=74a5545e"
+  let movie_name = document.getElementById("moviename");
+  movie_name.addEventListener("input", function () {
+    if ((movie_name.value).langth > 2) {
+      getdata();
+    }
+  });
+  movie_name.addEventListener("keypress", function () {
+    if (event.key == "Enter") {
+      getdata();
+    }
+  });
+
+//   async function getdata() {
+//     let myPromise = await fetch(url);
+//     try {
+//       var data = await myPromise.json();
+//       if (data.Response === "True") {
+//         showdata(data);
+//       } else {
+//         notfound();
+//       }
+//       console.log(data)
+//     } catch (error) {
+//       console.log("error");
+//     }
+//   }
+async function getdata(){
+       let movie = document.getElementById("moviename").value;
+       let res = await fetch(`https://www.omdbapi.com/?t=${movie}&apikey=74a5545e`);
+
+       let data = await res.json();
+       console.log(data)
+      showdata(data);
+   }
+
+  function showdata(data) {
+    document.querySelector("#display").innerHTML = ""
+
+    var img = document.createElement('img');
+    var div = document.createElement('div');
+
+    var released = document.createElement("h3");
+    released.innerText = "Released date :" + data.Released;
+    var title = document.createElement("h1");
+    title.innerText = "Title: " + data.Title;
+    var rating = document.createElement("h2");
+    rating.innerText = "IMDB Ratings :" + data.imdbRating
+    var recommend = document.createElement("h2");
+    recommend.innerText = "Highly Recommended";
+    recommend.style.color = "red";
+    recommend.style.fontSize = "25px";
+    if (data.Poster === "N/A") {
+      img.src =
+        "https://rukminim1.flixcart.com/image/416/416/jxnksy80/painting/s/p/g/sapa510-urban-monk-creations-original-imafg7bgcbngxp9q.jpeg?q=70";
+    } else {
+      img.src = data.Poster;
+    }
+    if (Number(data.imdbRating) > 8.5) {
+      div.append(recommend);
+    }
+    div.append(released, title, rating);
+
+    document.querySelector("#display").append(img, div);
+  }
+  function notfound() {
+    document.querySelector("#display").innerHTML = "";
+    var nomovie = document.createElement("h1");
+    nomovie.innerText = "Movie Not Found";
+    var img = document.createElement("img");
+    img.src =
+      "https://www.brainpop.com/conceptmap/img/img_noresults_movies.png";
+
+    document.querySelector("#display").append(nomovie, img);
+  }
+</script>

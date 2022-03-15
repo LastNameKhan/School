@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="start()">Start</button>
+        <button onclick="Pause()">pause</button>
+    </div>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+
+let pause; // here we defined the variable outside the function because
+// we want to use the same in the clearInterval statement to stop the slideshow.
+
+let i = 0; //start from 1 because the image is getting displayed a bit later
+function start () { 
+    let picture = JSON.parse(localStorage.getItem("images")); //we will be getting items from the local Storage
+
+let container = document.getElementById("container"); //we will catch the element in whihc we will append our image 
+
+container.innerHTML = null;
+
+let img = document.createElement('img'); //
+
+    img.src = picture[i] //getting the src or link of the image from the local storage
+
+    container.append(img); //appending it inside the container so that we can display the image inside the container
+
+pause = setInterval(function () { //here pause is used to define the variable outside the function
+
+    if(i===picture.length) //to make it run again
+    {
+        i = 0; //it will again start from 0th image index
+    }
+
+    container.innerHTML = null; //everytime an image is being displayed it will empty the container to display the another image
+
+    let img = document.createElement('img'); // create element image to make the image visible in container
+
+    img.src = picture[i]; // giving the source of the image from the local Storage
+
+    container.append(img); // appending the image inside the container
+
+    i++; //incrementing the value of i in every interval to dipplay the other images
+
+},3000); //time interval at what time which image you want to display
+}
+
+function Pause () { //pause function to stop the show at some perticular point
+    clearInterval(pause); //syntax to pause the slideshow
+}
+    
+</script>

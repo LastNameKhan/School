@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/d53bad8712.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+      #main {
+        display: flex;
+        margin: auto;
+        border: 1px solid white;
+        text-align: center;
+        align-content: center;
+      }
+      #map {
+        margin-left: 50px;
+        margin-top: 10px;
+      }
+      #city {
+        height: 25px;
+        width: 400px;
+      }
+      #search {
+        height: 30px;
+margin-left: 10px;
+      }
+      #newtab {
+        height: 30px;
+
+      }
+      #head {
+        border: 1px solid white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="head">
+    <input type="text" id="city" placeholder="Enter the location here" />
+    
+    
+    <button onclick="getweather()" id="search">Get Weather</button>
+    <br>
+    <br>
+    <button onclick="newpage()" id="newtab">Get Weather Forecast for next 7 days</button>
+  </div>
+    <div id="main">
+      <div id="container"></div>
+      <div id="map"></div>
+    </div>
+  </body>
+</html>
+<script>
+  // fetch
+  // URL
+
+  //api.openweathermap.org/data/2.5/weather?q={city name}&appid={aa1d6807323622637e3e2e91459350ca}
+  let container = document.getElementById("container");
+
+  async function getweather() {
+    try {
+      let city = document.getElementById("city").value;
+
+      let res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=aa1d6807323622637e3e2e91459350ca&units=metric`
+      );
+
+      let data = await res.json();
+      appendData(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  function appendData(data) {
+    map.innerHTML = null;
+    container.innerHTML = null;
+    let name = document.createElement("h4");
+    name.innerText = "Location : " + data.name;
+    let temp = document.createElement("h3");
+    temp.innerText = "Temperature : " + data.main.temp;
+    let mintemp = document.createElement("h3");
+    mintemp.innerText = "Min Temp : " + data.main.temp_min;
+    let maxtemp = document.createElement("h3");
+    maxtemp.innerText = "Max temp : " + data.main.temp_max;
+    let wind = document.createElement("h3");
+    wind.innerText = "Wind Speed : " + data.wind.speed;
+    let clouds = document.createElement("h3");
+    clouds.innerText = "Cloud : " + data.clouds.all;
+    let sunrise = document.createElement("h3");
+    sunrise.innerText = "Sunrise : " + data.sys.sunrise;
+    let sunset = document.createElement("h3");
+    sunset.innerText = "Sunset : " + data.sys.sunset;
+    let pressure = document.createElement("h3");
+    pressure.innerText = "Pressure : " + data.main.pressure;
+    let humidity = document.createElement("h3");
+    humidity.innerText = "Humidity : " + data.main.humidity;
+
+    let iframe = document.createElement("iframe");
+    iframe.src = `https://maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    iframe.height = "500px";
+    iframe.width = "500px";
+    container.append(
+      name,
+      temp,
+      mintemp,
+      maxtemp,
+      clouds,
+      wind,
+      sunrise,
+      sunset,
+      pressure,
+      humidity
+    );
+
+    main.append(container, map);
+    map.append(iframe);
+  }
+  function newpage() {
+    window.open("http://127.0.0.1:5501/class7/7daysweather.html","_blank");
+  }
+</script>

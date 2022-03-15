@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main {
+            height: 80px;
+            width: 100%;
+            display:flex;
+            justify-content: flex-start;
+            background-color: rgb(176, 236, 236);
+        }
+        #main>button {
+            height: 20px;
+            width:100px;
+            text-align: center;
+            background-color: grey;
+            margin:25px 20px 0px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <a href="https://www.masaischool.com/"></a>
+        <button id="login">Login</button>
+        <button id="signup">Sign Up</button>
+        <button id="men">Men</button>
+        <button id="women">Women</button>
+    </div>
+    
+</body>
+</html>
+<script>
+    document.querySelector("#login").addEventListener("click",function(){
+        window.location.href="login.html"
+    })
+    document.querySelector("#signup").addEventListener("click",function(){
+        window.location.href="signup.html"
+    })
+    document.querySelector("#men").addEventListener("click",function(){
+        window.location.href="men.html"
+    })
+    document.querySelector("#women").addEventListener("click",function(){
+        window.location.href="women.html"
+    })
+</script>

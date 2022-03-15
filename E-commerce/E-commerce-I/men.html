@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .inner{
+            display:flex;
+            justify-content: space-around;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <button id="cart">Go to cart</button>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script src="mensdata.js"></script>
+<script>
+    
+
+    var cartarr = JSON.parse(localStorage.getItem("cartdata")) || []
+    var mensdata = JSON.parse(localStorage.getItem("menproducts"))
+    mensData.map(function (elem,index,array){
+        var maindiv = document.createElement("div")
+
+        var img = document.createElement("img")
+        img.setAttribute("src",elem.image_url)
+
+        var name = document.createElement("p")
+        name.innerText=elem.name
+
+        var innerdiv = document.createElement("div")
+
+        var price = document.createElement("p")
+        price.innerText=elem.price
+
+        var strickedofprice = document.createElement("p")
+        strickedofprice.innerText=elem.strickedofprice
+        strickedofprice.style.textDecoration="line-through"
+
+        var btn = document.createElement("button")
+        // btn.setAttribute("id","cart")
+        btn.innerText="Add to cart"
+
+        innerdiv.append(price,strickedofprice)
+        innerdiv.setAttribute("class","inner")
+        maindiv.append(img,name,innerdiv,btn)
+
+        document.querySelector("#container").append(maindiv)
+
+        btn.addEventListener("click", function () {
+            console.log(elem);
+            localStorage.setItem("cartdata",JSON.stringify(cartarr))
+        })
+
+        document.querySelector("#cart").addEventListener("click",cartfun)
+        function cartfun () {
+            window.location.href="addtocart.html"
+        }
+    });
+
+</script>

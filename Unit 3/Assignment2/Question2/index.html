@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" id="name" placeholder="Enter Name">
+        <input type="number" id="number" placeholder="Enter Number">
+        <input type="name" id="city" placeholder="City">
+        <input type="submit" id="sub">
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("#form").addEventListener("submit",getdata)
+    var arr = [];
+    function getdata () {
+        event.preventDefault()
+        var dataobj = {
+            name:document.querySelector("#name").value,
+            number:document.querySelector("#number").value,
+            city:document.querySelector("#city").value
+        }
+
+        function construct (a,b,c) {
+            this.name = a
+            this.number = b
+            this.city = c
+        }
+        let data1 = new construct(name,number,city)
+        arr.push(dataobj)
+        console.log(arr)
+        localStorage.setItem("student",JSON.stringify(arr))
+    }
+</script>

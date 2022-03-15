@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Constructor Function</h3>
+</body>
+</html>
+<script>
+    function shoes (s)
+    {
+        (this.brand = "adidas"),
+        (this.type = s),
+        (this.seller = "flipkart")
+    }
+
+    
+    shoes.prototype.sale = function() {
+        console.log("20% off");
+    };
+
+    shoes.prototype.brand = "Nike";
+
+    let s1 = new shoes("sneakers");
+    let s2 = new shoes("loafers");
+    console.log(s2);
+</script>

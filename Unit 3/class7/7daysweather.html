@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/d53bad8712.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: rgb(155, 153, 150);
+      }
+      #main {
+        height: 200px;
+        display: flex;
+        width: 1000px;
+        margin: auto;
+        margin-top: 50px;
+      }
+      #main > div {
+        text-align: center;
+        border: 1px solid black;
+        height: 200px;
+        width: 200px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background-color: grey;
+        margin: 5px 5px 5px 5px;
+      }
+      #city {
+        margin-left: 550px;
+        height: 25px;
+        width: 400px;
+      }
+      #get {
+        margin: auto;
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      placeholder="Please Enter the name of the city"
+      id="city"
+    />
+    <button onclick="getdata()" id="get">Get Weather</button>
+    <div id="main"></div>
+  </body>
+</html>
+<script>
+  let main = document.getElementById("main");
+  async function getdata() {
+    try {
+      let city = document.getElementById("city").value;
+
+      let res = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=aa1d6807323622637e3e2e91459350ca&units=metric`
+      );
+      let data = await res.json();
+      appenddata(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  function appenddata(data) {
+    main.innerHTML = null;
+    let div1 = document.createElement("div");
+    let temp1 = document.createElement("h4");
+    temp1.innerText = "Temp : " + data.list[0].main.temp;
+    let icon1 = document.createElement("span");
+    icon1.className = "fa-solid fa-cloud-sun";
+    let div2 = document.createElement("div");
+    let temp2 = document.createElement("h4");
+    temp2.innerText = "Temp : " + data.list[1].main.temp;
+    let icon2 = document.createElement("span");
+    icon2.className = "fa-solid fa-cloud-sun-rain";
+    let div3 = document.createElement("div");
+    let temp3 = document.createElement("h4");
+    temp3.innerText = "Temp : " + data.list[2].main.temp;
+    let icon3 = document.createElement("span");
+    icon3.className = "fa-solid fa-cloud-sun-rain";
+    let div4 = document.createElement("div");
+    let temp4 = document.createElement("h4");
+    temp4.innerText = "Temp : " + data.list[3].main.temp;
+    let icon4 = document.createElement("span");
+    icon4.className = "fa-solid fa-cloud-sun";
+    let div5 = document.createElement("div");
+    let temp5 = document.createElement("h4");
+    temp5.innerText = "Temp : " + data.list[4].main.temp;
+    let icon5 = document.createElement("span");
+    icon5.className = "fa-solid fa-cloud-sun-rain";
+
+    
+    div5.append(temp5, icon5);
+    div4.append(temp4, icon4);
+    div3.append(temp3, icon3);
+    div2.append(temp2, icon2);
+    div1.append(temp1, icon1);
+    main.append(div1, div2, div3, div4, div5);
+  }
+</script>

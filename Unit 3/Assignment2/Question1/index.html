@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function skillset () {
+        console.log(`amar can learn how to be ${this.skill}`)
+        console.log(`akbar can learn how to be ${this.skill}`)
+        console.log(`anthony can learn how to be ${this.skill}`)
+    }
+    let amar = {
+        skill:"singer",
+        city:"goa",
+    }
+    let akbar = {
+        skill:"chef",
+        city:"Mumbai",
+    }
+    let anthony = {
+        skill:"magician",
+        city:"kashmir",
+    }
+
+    skillset.call(akbar)
+    skillset.call(amar)
+    skillset.call(anthony)
+</script>

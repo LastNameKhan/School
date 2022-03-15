@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        #main {
+            height: 400px;
+            width: 400px;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 150px;
+            background-color: rgb(223, 247, 247);
+            line-height: 25px;
+        }
+        #main>div {
+            height:100px;
+            width:350px;
+            margin: auto;
+            margin-top: 50px;
+            text-align: center;
+            background-color: rgb(221, 219, 219);
+            border-radius: 5px;
+        }
+        #sub {
+            align-items: center;
+            background-color: black;
+            color:white;
+            height: 35px;
+            width: 100px;
+            margin-left: 150px;
+            margin-top: 10px;
+        }
+        .input{
+            height:30px;
+            font-size: 17px;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+        <div id="main">
+            <div><h3>Username</h3><input type="text" placeholder="Enter Username" id="user"></div>
+            <div><h3>Password</h3><input type="password" placeholder="Enter Password" id="key"></div>
+            <input type="submit" id="sub">
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    var users = JSON.parse(localStorage.getItem("data"))
+
+    document.querySelector("#form").addEventListener("submit",formsub)
+
+    var form = document.querySelector("#form")
+
+    function formsub () {
+        event.preventDefault();
+
+        //form id value
+        var user = form.user.value
+        var pass = form.key.value
+        console.log(user,pass)
+
+        var flag = false;
+        for(var i = 0;i<users.length;i++)
+        {
+            if(users[i].name == user&& users[i].password == pass)
+            {
+                flag=true;
+            }
+            else
+            {
+                flag=false;
+            }
+        }
+        if(flag=true)
+        {
+            alert("Login Successful")
+        }
+        else
+        {
+            alert("Invalid Credentials")
+        }
+    }
+</script>

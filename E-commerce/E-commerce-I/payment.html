@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            color:white;
+            font-family: sans-serif;
+        }
+        #container {
+            width: 400px;
+            height:400px;
+            margin:auto;
+            background-color: black;
+            border-radius: 10px;
+            text-align: center;
+        }
+        #container>div {
+            height: 70px;
+            width: 300px;
+            margin:auto;
+            margin-top: 15px;
+            text-align: center;
+            line-height: 15px;
+        }
+        #container>h4{
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+    <div id="container">
+        <div>
+            <h4>Name on the Card</h4>
+            <input type="text" id="name">
+        </div>
+        <div><h4>Card Number</h4>
+        <input type="number" id="number">
+    </div>
+    <div><h4>Expiry Date</h4>
+    <input type="date" id="date">
+</div>
+<div><h4>CVV</h4>
+    <input type="number" id="cvv"></div>
+    <input type="submit" id="sub">
+    </div>
+</form>
+</body>
+</html>
+<script>
+    document.querySelector("#form").addEventListener("submit",card)
+    var details = JSON.parse(localStorage.getItem("card"))
+    var form = document.querySelector("#form")
+    function card () {
+        event.preventDefault()
+        // var cardobj = {
+        //     name:document.querySelector("#name").value,
+        //     number:document.querySelector("#number").value,
+        //     date:document.querySelector("#date").value,
+        //     cvv:document.querySelector("#cvv").value
+        // }
+
+        var name = form.name.value
+        var number = form.number.value
+        var date = form.date.value
+        var cvv = form.cvv.value
+        console.log(name,number,date,cvv)
+
+        // carddetails.push(cardobj)
+        // localStorage.setItem("card",JSON.stringify(carddetails))
+        var flag=false;
+        for(var i = 0;i<details.length;i++)
+        {
+            if(details[i].name == name&&details[i].number == number&&details[i].date == date&&details[i].cvv == cvv)
+            {
+                window.location.href="otp.html"
+                break;
+            }
+            else
+            {
+                alert("Please check your card details")
+                break;
+            }
+        }
+    }
+
+</script>

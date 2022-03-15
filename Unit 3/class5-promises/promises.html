@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // Promise
+
+  //1. Fullfilled (success)
+  //2. rejected (failure)
+  //3. In process (pending)
+
+  //How does this thing applies to coding?
+
+  //Uploading something example
+  //1.I will try to upload your image (creation of the promise - new promise() )
+  //2.while doing it it shows you the progress of upload ()
+  //3.if image successfully uploaded, ( fullfilled, resolve ())
+  //3.1 - it will show the image ()
+  //3.2 - it will show notification image upload successfully ( )
+
+  // How do it know if my image is successfully uploaded? ( .then  and .catch, async await )
+
+  let passexam = false;
+  let myprom = new Promise(function (resolve, reject) {
+    //Promise is a function - it is a construction function it will always return an object
+    if (passexam) {
+      resolve("bike");
+    } else {
+      reject("paragon");
+    }
+  });
+  // success
+  myprom.then(function (response) {
+    console.log(response);
+  });
+  //failure
+
+  myprom.catch(function (error) {
+    console.log(error);
+  });
+
+  // .then, resolve() gives you the values which is positive
+  // .catch reject() gives you the negative value
+</script>

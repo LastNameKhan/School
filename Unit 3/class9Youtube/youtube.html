@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+      #search_results {
+          display: grid;
+          grid-template-columns: repeat(4,1fr);
+          grid-gap: 10px;
+      }
+  </style>
+  <body>
+    <h1>Youtube</h1>
+    <input type="text" id="search" />
+    <button onclick="searchvideos()">Search</button>
+    <div id="search_results"></div>
+  </body>
+</html>
+<script>
+  //Youtube API - Reading Documentation
+  //array of Objects
+  // Find the URL
+  //curl \
+  //   'https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=football&key=[YOUR_API_KEY]' \
+  //   --header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
+  //   --header 'Accept: application/json' \
+  //   --compressed
+
+  // API KEY - AIzaSyCQFxSv50MXS2Bx90IqeJ4f32gvRSzoXcM
+
+const search_results_div = document.getElementById('search_results')
+
+  const searchvideos = async () => {
+    try {
+      let inp = document.getElementById("search").value;
+      let res = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${inp}&key=AIzaSyCQFxSv50MXS2Bx90IqeJ4f32gvRSzoXcM&maxResults=50`
+      );
+      let data = await res.json();
+      let videos = data.items;
+      appendvideos(videos)
+      console.log(videos)
+    //   return videos;
+      // console.log(data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const appendvideos = (data) => {
+      search_results_div.innerHTML = null
+    try {
+      data.forEach((el) => {
+        let div = document.createElement("div");
+        let title = document.createElement("p");
+        title.innerText = el.snippet.title;
+        let iframe = document.createElement("iframe");
+        iframe.src = `https://www.youtube.com/embed/${el.id.videoId}`
+        div.append(iframe,title)
+        search_results_div.append(div)
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //embed - adding something
+  // do you want to add a video to your app
+  // i want to embed my video
+  // embed URL - https://www.youtube.com/embed/LzKIizX0ewQ
+</script>

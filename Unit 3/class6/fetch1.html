@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Fetch 1
+    <div id="container"></div>
+  </body>
+</html>
+<script>
+  // API - Concept
+  //Fetch is the tool which allow us to use API
+  //fetch ()
+  //Client - is user and tool used by the client is Browser
+  // Server - Database
+  // the road between client and server is the url
+  //URL has to be their make sure to type the correct url
+
+  //Roadtrips to the server
+  // car (tool) - which is going to make roadtrip possible
+  //destination - server
+  // road - url map direction
+  // we will be going from our browser to the server
+
+  // let x =  fetch (); // fetch returns a promise object
+  // console.log(x);
+
+  //Why fetch returns promise?
+  //1. You are going to server
+  //2. Server is going to take time
+  //3. will it even talk to me back ? response?
+
+  //Making a server call
+
+  let url = "https://fakestoreapi.com/products";
+  //   let mypromise = fetch(url);
+
+  //   mypromise.then(function (response) {
+
+  //     //collect the stream in one
+  //     return response.json(); // json is used to collect the data from the stream
+  //   })
+  //   .then(function (response){
+  //       console.log(response)
+  //   });
+
+  async function getdata() {
+    try {
+      let response = await fetch(url);
+
+      let data = await response.json();
+      appendProducts(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  getdata();
+
+  
+  let container = document.getElementById("container");
+
+  function appendProducts(data) {
+    data.forEach(function (element) {
+      let div = document.createElement("div");
+      let img = document.createElement("img");
+      img.src = element.image;
+      let title = document.createElement("p");
+      title.innerText = element.title;
+      let desc = document.createElement("p");
+      desc.innerText = element.description;
+      let price = document.createElement("p");
+      price.innerText = element.price;
+
+      div.append(img, title, price, desc);
+      container.append(div);
+    });
+  }
+</script>

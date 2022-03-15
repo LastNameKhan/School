@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="count"></h1>
+    <h1 id="countdown"></h1>
+</body>
+</html>
+<script>
+    //Program to write an positive counter
+    let display = document.getElementById("count"); //we will be ctaching the id with it.
+
+
+    function counter () { // we will be defining a function.
+
+        let i = 0; // Here we will define the starting point of out count
+
+        setInterval(function() { //here we will set the value after how much time we want out value to be change
+            i=i+1; // what is the value that we want to give after the interval is completed
+
+            display.innerText = i; //here we will display the ineerText of out h1 element
+        },1000); //1000 millisecond means 1 sec the time after which out count will change
+    }
+
+    counter(); // Here we are calling out our function
+
+    let display1 = document.getElementById("countdown")
+
+    function countdown() {
+        let j = 10;
+
+        let start = setInterval(function() {
+            j = j-1;
+
+            display1.innerText=j;
+
+            if (j==0)
+            {
+                clearInterval(start);
+            }
+
+        },1000);
+    }
+
+    countdown();
+</script>

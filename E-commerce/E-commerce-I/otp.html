@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main {
+            height: 100px;
+            width: 200px;
+            background-color: black;
+            color: white;
+            border: 1px red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+    <div id="main">
+        <div><h3>Enter OTP</h3>
+        <input type="number" id="otp"></div>
+        <input type="submit" id="sub">
+    </div>
+</form>
+</body>
+</html>
+<script>
+    document.querySelector("#form").addEventListener("submit",otp)
+    var otparr = JSON.parse(localStorage.getItem("otp"))
+    var form = document.querySelector("#form")
+    function otp() {
+        event.preventDefault()
+
+        var otp = form.otp.value
+
+        for(var i = 0;i<otparr.length;i++)
+        {
+            if(otparr[i].otp == otp)
+            {
+                alert("Payment Successfull")
+                break;
+            }
+            else
+            {
+                alert("Please enter a valid otp")
+            }
+        }
+        // var otpObj = {
+        //     otp:document.querySelector("#otp").value
+        // }
+        // otparr.push(otpObj)
+        // console.log(otparr)
+        // localStorage.setItem("otp",JSON.stringify(otparr))
+    }
+</script>

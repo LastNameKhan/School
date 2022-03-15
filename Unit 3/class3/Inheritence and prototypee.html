@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Inheritence and Prototype</h2>
+</body>
+</html>
+<script>
+    const cat = {
+        name:"cat",
+        legs:4,
+        furs:true,
+        tail:true,
+        type:"mammal",
+    };
+
+    // const tiger = {
+    //     name:"tiger",
+    //     legs:4,
+    //     furs:true,
+    //     tail:true,
+    //     type:"mammal",
+    // }
+
+    // To optimise the use of extra memory and use of an 
+    //ibject multiple times we have property called Object.create
+
+    //Object.create
+
+    const lion = Object.create(cat);
+    const tiger = Object.create(cat);
+
+    tiger.name="tiger";
+    tiger.speed = "60kmph";
+    console.log(tiger);
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select id="food">
+      <option value="fries">Fries</option>
+      <option value="burger">Burger</option>
+      <option value="coke">Coke</option>
+      <option value="wadapav">wadapav</option>
+    </select>
+    <button onclick="orderFood()">order</button>
+  </body>
+</html>
+<script>
+  //   in macd give the order. gave the money
+
+  //   wait for your order
+
+  //   order id
+
+  //   order number is ready when promise is fullfilled
+
+  function orderFood() {
+    let food = document.getElementById("food").value;
+
+    let status = "open";
+
+    let foodPromise = new Promise(function (resolve, reject) {
+      let time = Math.random() * 9000;
+      if (status === "close") {
+        reject("Shop closed ghr jao!");
+      } else {
+        setTimeout(function () {
+          resolve(food);
+        }, time);
+      }
+    });
+
+    foodPromise.then(function (response) {
+      console.log(`${response} is ready`);
+    });
+
+    foodPromise.catch(function (error) {
+      console.log(error);
+    });
+  }
+</script>
