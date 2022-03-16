@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+      Number of Steps problem
+  </body>
+</html>
+<script>
+  var N = 4;
+  function numberofways(N) {
+    if (N == 0) {
+      return 1;
+    }
+    if (N < 0) {
+      return 0;
+    } else {
+      return numberofways(N - 1) + numberofways(N - 2) + numberofways(N - 3);
+    }
+  }
+  console.log(numberofways(N))
+</script>
