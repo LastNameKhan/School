@@ -1,0 +1,25 @@
+document.querySelector("#form").addEventListener("submit",formsub)
+// if(arr == null)
+// {
+//     var arr = [];
+// }
+// else
+// {
+//     var arr = JSON.parse(localstorage.getItem("todoitem"))
+// }
+var arr = JSON.parse(localStorage.getItem("todoitem")) || [];
+
+function formsub(event){
+    event.preventDefault();
+    var name = document.querySelector("#name").value;
+    var quantity = document.querySelector("#qty").value;
+    var priority = document.querySelector("#priority").value;
+    console.log(name,quantity,priority)
+    var todoobj = {
+        name:name,
+        quantity:quantity,
+        priority:priority
+    };
+    arr.push(todoobj)
+    localStorage.setItem("todoitem",JSON.stringify(arr))
+}
