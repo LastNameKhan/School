@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    GP and Recurrsion 1 + 1/r + 1/r^2 + 1/r^3 + 1/r^4 + ....1/r^n;
+</body>
+</html>
+<script>
+let n  =1;
+let r = 1;
+function gp(n,r)
+{
+    if(n===0)
+    {
+        return 1;
+    }
+    else
+    {
+        return Math.pow(r,n) + gp(n-1,r);
+    }
+}
+console.log(gp(n,r).toFixed(4))
+</script>
