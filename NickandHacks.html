@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Tom and Nick are good friends.Once Tom asked Nick exactly N rupees, but Nick
+    has only 1 rupee in his bank account. Nick wants to help his friend so he
+    wrote two hacks First hack can multiply the amount of money he owns by
+    10,while the second can multiply it by 20. These hacks can be used any
+    number of times.Can Nick help Tom with his hacks?
+  </body>
+</html>
+<script>
+    function hack(money,value)
+{
+    if(money === value)
+    {
+        return true;
+    }
+    if(money > value)
+    {
+        return false;
+    }
+    if(hack(money*10,value)==true||hack(money*20,value)==true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+</script>
