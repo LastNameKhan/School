@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Given an integer N, you have to find the natural logarithmic value of the
+    given integer's factorial i.e., ln(n!). You have to print the result up to 4
+    digits after the decimal point. Note:- You should not be supposed to do like
+    " finding n! and apply direct inbuilt log on top that ". Instead of that,
+    you can use Math.log() if applicable.Also, you can't use any direct formula
+    or perform the task iteratively - Try achieving the output recursively. Java
+    Script:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
+  </body>
+</html>
+<script>
+    var n = 3;
+    function factorial(n)
+    {
+        if(n==0|n==1)
+        {
+            return 0;
+        }
+        else
+        {
+            return Math.log(n) + factorial(n-1);
+        }
+    }
+    console.log(factorial(n).toFixed(4))
+</script>
