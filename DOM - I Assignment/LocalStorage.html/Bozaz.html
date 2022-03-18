@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="product">
+        <select id="category">
+            <option value="electronics">electronics</option>
+            <option value="furniture">furniture</option>
+            <option value="home appliance">home appliance</option>
+            <option value="books">books</option>
+        </select>
+        <input type="name" id="title" value="">
+        <input type="name" id="description" value="">
+        <input type="number" id="price" value="">
+        <input type="submit">
+        <tbody>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+        </tbody>
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("#product").addEventListener("submit",myfun)
+    var arr = JSON.parse(localStorage.getItem("Bozaz"));
+    function myfun (event) {
+        event.preventDefault();
+        var category = document.querySelector("#category").value;
+        var title = document.querySelector("#title").value;
+        var description = document.querySelector("#description").value;
+        var price = document.querySelector("#price").value;
+
+        var obj = {category:category,
+        title:title,
+        description:description,
+        price:price
+        }
+        arr.push(obj)
+        localStorage.setItem("Bozaz",JSON.stringify(arr))
+    }
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #logo {
+            height: 100px;
+            width: 100px;
+            margin-left: 80px;
+        }
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+    var investors  = [
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg",name:"Vijay Shekhar Sharma",title:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg",name:"Vijay Shekhar Sharma",title:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg",name:"Vijay Shekhar Sharma",title:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg",name:"Vijay Shekhar Sharma",title:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    ]
+
+    investors.map(function(elem,index,array){
+        var div = document.createElement("div");
+
+        var avatar = document.createElement("img");
+        avatar.setAttribute("src",elem.image);
+
+        var name = document.createElement("h4");
+        name.innerText = elem.name;
+
+        var title = document.createElement("p");
+        title.innerText = elem.title;
+
+        var log = document.createElement("img");
+        log.setAttribute("src",elem.logo);
+        log.setAttribute("id","logo")
+
+        div.append(avatar,name,title,log)
+        document.querySelector("#container").append(div);
+    });
+</script>

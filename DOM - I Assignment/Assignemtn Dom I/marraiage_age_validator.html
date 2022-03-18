@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="selectTag">
+        <option value = ""></option>
+        <option value = "male">Male</option>
+        <option value = "female">Female</option>
+    </select>
+    <input id="yob" type="number" placeholder="Year of Birth" value="">
+    <button onClick="check()">Verify</button>
+</body>
+</html>
+
+<script>
+    function check(){
+        var dob = document.getElementById("yob").value
+        if((dob>=2000)&&(value="male"))
+        {
+            alert("You are eligible to get married")
+        }
+        else((value="female")&&(dob>2002))
+        {
+            alert("You are eligible to get married")
+        }
+    }
+</script>

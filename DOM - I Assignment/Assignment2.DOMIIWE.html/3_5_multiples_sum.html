@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="multiple" type="number" value="">
+    <button onclick="sum()">Submit</button>
+    <p class="out"></p>
+</body>
+</html>
+<script>
+    function sum(){
+        var sum = 0;
+        var limit = document.getElementById("multiple").value;
+        for(var i = 0;i<=limit;i++)
+        {
+            if(i%15==0)
+            {
+                sum = sum + i;
+            }
+        }
+        document.querySelector("p").innerText=sum;
+        }
+</script>
