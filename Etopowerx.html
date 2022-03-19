@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Using the below explanation for n-th term of e^x, calculate the value of e^x
+    given x and n. Do not calculate it directly using the formula and do not
+    write any iterative code. Image
+    1+x+x^2/2!+x^3/3!+....X^n/n!
+  </body>
+</html>
+<script>
+    var x = 4;
+    var n = 2;
+    function factorial(n)
+    {
+        if(n==0||n==1)
+        {
+            return n;
+        }
+        else{
+        return n * factorial(n-1)
+        }
+    }
+    function etox(x,n)
+    {
+        if(n===0)
+        {
+            return 1;
+        }
+        else
+        {
+            return etox(x,n-1) + Math.pow(x, n)/factorial(n)
+        }
+    }
+    console.log(etox(x,n).toFixed(4))
+</script>
