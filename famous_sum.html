@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    You are given two numbers nand k. The number p iscreated by concatenating
+    the string n k times. we need to find thesuper digit ofthe integer p We
+    definesuperdigit of an integer pusing the following rules: If p has only 1
+    digit, then itssuperdigit is 1. Otherwise, thesuperdigit of p is equal to
+    thesuperdigit of the sum of the digits of p. Read the Sample input
+    explanation for better understanding.
+  </body>
+</html>
+<script>
+  var str = "148";
+  var k = "3";
+  var sum = 0;
+  var newsum = 0;
+  for (var i = 0; i < str.length; i++) 
+  {
+    sum = sum + Number(str[i]);
+  }
+  newsum = sum * k;
+  newstr = newsum.toString();
+  function superdigit(newstr) {
+    var sum1 = 0;
+    for (var i = 0; i < newstr.length; i++) {
+      sum1 = sum1 + Number(newstr[i]);
+    }
+    if (sum1 < 10) {
+      return sum1;
+    } else {
+      sum1 = sum1.toString();
+      return superdigit(sum1);
+    }
+  }
+  console.log(superdigit(newstr));
+</script>
