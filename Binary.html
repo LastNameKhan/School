@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Given an integer n, you need to find out its binary representation using
+    recursion. Here multiple test cases exist and the expected time complexity
+    is - O(t*logn) where is t is the number of test cases.
+  </body>
+</html>
+<script>
+    var n = 15;
+    var str = "";
+    function binary(n)
+    {
+        if(n===0)
+        {
+            return str;
+        }
+        else
+        {
+            str = str + n%2;
+            n = Math.floor(n/2);
+            return binary(n)
+        }
+    }
+    console.log(binary(n))
+</script>
