@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Implement the GCD Function using recursion. Given two integers a and b, find the greatest common divisor of a and b.
+
+The approach which uses logarithmic time complexity is expected here.
+</body>
+</html>
+<script>
+    var a = 6;
+    var b = 9;
+    function gcd(a,b)
+    {
+        if(b===0)
+        {
+            return a;
+        }
+        else
+        {
+            return gcd(b,a%b)
+        }
+    }
+    console.log(gcd(a,b));
+</script>
