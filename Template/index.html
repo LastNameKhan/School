@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #main {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+    }
+  </style>
+  <body>
+    <div>
+      <h3 id="wallet">
+        <!--SHOW CURRENT WALLET VALUE HERE, ONLY THE NUMBER SHOULD BE VISIBLE-->
+      </h3>
+    </div>
+
+    <div id="main">
+      <!--SHOW ALL THE VOUCEHRS DATA FROM API HERE( IMAGE, NAME AND PRICE)-->
+    </div>
+  </body>
+</html>
+
+<script type="module">
+  //WRITE YOUR LOGIC HERE
+  document.getElementById("wallet").innerText=localStorage.getItem("wallet");
+  let main = document.getElementById("main");
+  getdata();
+  async function getdata() {
+    try {
+      let res = await fetch(
+        `https://masai-vouchers-api.herokuapp.com/api/vouchers`
+      );
+      let data = await res.json();
+      appendData(data[0].vouchers);
+      console.log(data[0].vouchers);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  function appendData(data) {
+    // main.innerHTML = null;
+    data.map(function (elem) {
+      let div = document.createElement("div")
+      let picture = document.createElement("img")
+      picture.src = elem.image;
+      let name = document.createElement("p")
+      name.innerText = elem.name;
+      let price = document.createElement("p")
+      price.innerText = elem.price;
+      let buy = document.createElement("button")
+      buy.setAttribute("id",'buynow');
+      buy.innerText = "Buy"
+      buy.addEventListener("click",function(){
+        cart(elem);
+      })
+      div.append(picture,name,price,buy)
+      document.querySelector("#main").append(div)
+    });
+  };
+  var setpurchases = JSON.parse(localStorage.getItem("purchases")) || [];
+  function cart(elem) {
+    // document.querySelector("#buynow").innerHTML=null;
+    var obj = {
+      name: elem.name,
+      picture: elem.image,
+      price: elem.price,
+    }
+    setpurchases.push(obj)
+    console.log(setpurchases)
+    localStorage.setItem("purchases",JSON.stringify(purchases));
+  }
+  
+</script>
