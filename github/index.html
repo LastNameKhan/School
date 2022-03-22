@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <div id="navbar"></div>
+  </body>
+</html>
+<script type="module">
+  import header from "./components/header.js";
+  let navbar = document.getElementById("navbar");
+  navbar.innerHTML = header();
+  let input_box = document.getElementById("search-input");
+  input_box.addEventListener("keypress", () => {
+    getdata(event);
+  });
+  let img = document.getElementById("profile-img")
+
+  const getdata = async (e) => {
+    if (e.code === "Enter") {
+      let input = input_box.value;
+      let res = await fetch(`https://api.github.com/users/${input}/repos`)
+      let data = await res.json()
+      console.log(data)
+      img.src = data[0].owner.avatar_url
+    }
+  };
+</script>
