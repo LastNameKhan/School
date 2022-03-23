@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Given a collection of numbers, return all possible permutations. NOTE: No
+    two entries in the permutation sequence should be the same. For the purpose
+    of this problem, assume that all the numbers in the collection are unique.
+    USING BUILT-IN LIBRARY FUNCTION TO PERMUTE WILL LEAD TO DISQUALIFICATION
+  </body>
+</html>
+<script>
+  var arr = [1, 2, 3];
+  var newarr = [];
+  var index = 0;
+  
+  permutation(arr, newarr, index);
+  function permutation(arr, newarr, index) {
+    if (index === arr.length) {
+      newarr.push([...arr]);
+    } else {
+      for (var i = index; i < arr.length; i++) {
+        swap(arr, i, index);
+        permutation(arr, newarr, index + 1);
+        swap(arr, i, index);
+      }
+    }
+  }
+  function swap(arr, i, j) {
+    temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    return;
+  }
+  newarr = newarr.sort(function (a, b) {
+    return a.join("") - b.join("");
+  });
+  for (var i of newarr) {
+    console.log(i.join(" "));
+  }
+</script>
