@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <style>
+    #container {
+      display: flex;
+      height: 850px;
+      width: 100%;
+      border: 1px solid black;
+    }
+    #sidebar {
+      display: block;
+      height: 500px;
+      width: 300px;
+      border: 1px solid red;
+    }
+    #main {
+      display: block;
+      height: 850px;
+      width: 100%;
+      border: 3px dashed brown;
+    }
+    #sidebar > div {
+      border: 1px solid black;
+    }
+  </style>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append the horizontal navbar(sidebar) here only-->
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append psychology blogs here only-->
+      </div>
+    </div>
+  </body>
+</html>
+<script type="module">
+  import sidebar from "./components/sidebar.js"
+  import {apiCall, appendArticles} from "./scripts/main.js";
+  console.log(apiCall, appendArticles)
+  let side = document.getElementById("sidebar")
+  side.innerHTML = sidebar();
+  // let main = document.getElementById("main");
+  // let response = await apiCall(`https://blog-search-u3c4.herokuapp.com/api/blogs/psychology`);
+  // console.log(response)
+  // appendArticles(response,main)
+  
+
+  const getdata = async () => {
+    try {
+      let res = await fetch(
+        `https://blog-search-u3c4.herokuapp.com/api/blogs/psychology`
+      );
+
+      let data = await res.json();
+      appenddata(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  getdata();
+  let main = document.getElementById("main");
+  const appenddata = (data) => {
+    data.forEach(function (el) {
+      let div = document.createElement("div");
+      let img = document.createElement("img");
+      img.src = el.urlToImage;
+      let title = document.createElement("h4");
+      title.innerText = el.title;
+      let content = document.createElement("p");
+      content.innerText = el.content;
+      div.append(img, title, content);
+      main.append(div);
+    });
+  };
+</script>
