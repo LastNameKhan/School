@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #member-1 {
+      border: 2px solid black;
+      height: 50px;
+      width: 50px;
+      margin-left: 20px;
+      text-align: center;
+    }
+    #member-2 {
+      border: 2px solid black;
+      height: 50px;
+      width: 50px;
+      margin-top: 25px;
+      margin-left: 20px;
+      text-align: center;
+    }
+    #member-3 {
+      border: 2px solid black;
+      height: 50px;
+      width: 50px;
+      margin-top: 25px;
+      margin-left: 20px;
+      text-align: center;
+    }
+    #roll {
+      margin-top: 25px;
+    }
+  </style>
+  <body>
+    <div id="winner"></div>
+    <div id="member-1"></div>
+    <div id="member-2"></div>
+    <div id="member-3"></div>
+    <button id="roll">ROLL THE DICE</button>
+  </body>
+</html>
+<script>
+  var result = document
+    .getElementById("roll")
+    .addEventListener("click", create);
+  function create() {
+    event.preventDefault();
+    var refresh = (document.getElementById("member-1").innerHTML = null);
+    var refresh1 = (document.getElementById("member-2").innerHTML = null);
+    var refresh2 = (document.getElementById("member-3").innerHTML = null);
+    var num = Math.floor(Math.random() * 6) + 1;
+    var display = (document.getElementById("member-1").innerText = num);
+    var num1 = Math.floor(Math.random() * 6) + 1;
+    var display1 = (document.getElementById("member-2").innerText = num1);
+    var num2 = Math.floor(Math.random() * 6) + 1;
+    var display3 = (document.getElementById("member-3").innerText = num2);
+
+    if (num > num1 && num > num2) {
+      document.getElementById("member-1").style.backgroundColor = "green";
+      document.getElementById("winner").innerText = "Member-1 is the winner"
+    }
+    if (num1 > num && num1 > num2) {
+      document.getElementById("member-2").style.backgroundColor = "green";
+      document.getElementById("winner").innerText = "Member-2 is the winner"
+    }
+    if (num2 > num && num2 > num1) {
+      document.getElementById("member-3").style.backgroundColor = "green";
+      document.getElementById("winner").innerText = "Member-3 is the winner"
+    }
+    if ((num > num1 && num < num2) || (num < num1 && num > num2)) {
+      document.getElementById("member-1").style.backgroundColor = "yellow";
+    }
+    if ((num1 > num && num1 < num2) || (num1 < num && num1 > num2)) {
+      document.getElementById("member-2").style.backgroundColor = "yellow";
+    }
+    if ((num2 > num && num2 < num1) || (num2 < num && num2 > num1)) {
+      document.getElementById("member-3").style.backgroundColor = "yellow";
+    }
+    if (num < num1 && num < num2) {
+      document.getElementById("member-1").style.backgroundColor = "red";
+    }
+    if (num1 < num && num1 < num2) {
+      document.getElementById("member-2").style.backgroundColor = "red";
+    }
+    if (num2 < num && num2 < num1) {
+      document.getElementById("member-3").style.backgroundColor = "red";
+    }
+    if(num===num1||num1===num)
+    {
+        document.getElementById("member-1").style.backgroundColor = "blue";
+        document.getElementById("member-2").style.backgroundColor = "blue";
+    }
+    if(num1===num2||num2===num1)
+    {
+        document.getElementById("member-2").style.backgroundColor = "blue";
+        document.getElementById("member-3").style.backgroundColor = "blue";
+    }
+    if(num2===num||num===num2)
+    {
+        document.getElementById("member-2").style.backgroundColor = "blue";
+        document.getElementById("member-3").style.backgroundColor = "blue";
+    }
+    if(num===num1===num2)
+    {
+        document.getElementById("member-1").style.backgroundColor = "blue";
+        document.getElementById("member-2").style.backgroundColor = "blue";
+        document.getElementById("member-3").style.backgroundColor = "blue";
+    }
+  }
+</script>
