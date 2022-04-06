@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    let url = `https://www.themealdb.com/api.php?ref=apilist.fun`
+    async function getdata() {
+        try{
+            let response = await fetch(url);
+            let data = await response.json();
+            appendProducts(data);
+            console.log(response)
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+    // getdata();
+    // let container = document.getElementById("container")
+    // function appendProducts(data)
+    // {
+    //     let div = document.createElement("div");
+        
+    // }
+</script>
