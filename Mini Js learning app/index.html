@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+      #display-content {
+          height: fit-content;
+          width: fit-content;
+          border: 2px dashed cyan;
+      }
+  </style>
+  <body>
+    <div id="buttons">
+      <!--Create buttons namely “Scope”, “Hoisting”, ‘Constructor Functions’, ‘Prototype’ in index.html. Each button will have it's respective name as HTML id. For e.g Scope button will HTML id as "scope". ( Note: no capital letter in id )-->
+      <button id="scope">Scope</button>
+      <button id="hoisting">Hoisting</button>
+      <button id="constructor-function">Constructor Function</button>
+      <button id="prototype">Prototype</button>
+    </div>
+    <div id="display-content"></div>
+  </body>
+</html>
+<script>
+    var hoistingarr = JSON.parse(localStorage.getItem("hoisting")) || [];
+    var scopearr = JSON.parse(localStorage.getItem("scope")) || [];
+    var constructarr = JSON.parse(localStorage.getItem("constructfunction")) || [];
+    var prototypearr = JSON.parse(localStorage.getItem("prototype")) || [];
+    var prototypeobj = {
+        point1: "1.Prototypes are the mechanism by which JavaScript objects inherit features from one another.",
+        point2: "2.Every object in JavaScript has a built-in property, which is called its prototype.",
+        point3: "3. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain.",
+    }
+    prototypearr.push(prototypeobj)
+    var constructobj = {
+        point1: "1.The constructor method is a special method of a class for creating and initializing an object instance of that class.",
+        point2: "2.A constructor enables you to provide any custom initialization that must be done before any other methods can be called on an instantiated object.",
+        point3: "3.If you don't provide your own constructor, then a default constructor will be supplied for you. If your class is a base class, the default constructor is empty",
+    }
+    constructarr.push(constructobj)
+    var scopeobj = {
+        point1: "1.Global Scope. Any variable that's not inside any function or block (a pair of curly braces), is inside the global scope.",
+        point2: "2.Variables declared inside a function is inside the local scope.",
+        point3: "3.Just like functions in JavaScript, a scope can be nested inside another scope.",
+    }
+    scopearr.push(scopeobj)
+    var hoistingobj = {
+        point1: "https://drive.google.com/drive/folders/1QpqaqwHd6ZUBZOqtcYI-r1KvJJRTzhUp?usp=sharing"
+    }
+    hoistingarr.push(hoistingobj)
+    localStorage.setItem("prototype",JSON.stringify(prototypearr))
+    localStorage.setItem("constructfunction",JSON.stringify(constructarr))
+    localStorage.setItem("hoisting",JSON.stringify(hoistingarr))
+    localStorage.setItem("scope",JSON.stringify(scopearr))
+    var display = document.getElementById("scope").addEventListener("click",displayscope)
+    function displayscope () {
+        event.preventDefault()
+        hoistingarr.map(function (elem){
+            var video = document.createElement("img")
+            video.src = elem.point1
+            var maindiv = document.getElementById("display-content").append(video)
+        })
+    }
+    displayscope()
+</script>
