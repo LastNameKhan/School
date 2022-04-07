@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+    //The use of new and this keyword how to use
+//   function NikeProduct(n, p, t) {
+//     let obj = {};
+//     obj.name = n;
+//     obj.price = p;
+//     obj.type = t;
+
+//     return obj;
+//   }
+//   let p1 = NikeProduct("shoes", 2000, "loafers");
+//   console.log(p1);
+
+  //Solving the same problem with the help of constructor function
+
+  function NikeProductCF (n,p,t) {
+      this.name = n;  //this is always pointing towards an object
+      this.price = p;
+      this.type = t;
+  }
+  let p2 = new NikeProductCF('shoes',5000,'loafers')
+  //nwe keyword returns the object
+  let p3 = new NikeProductCF('flipflop',6000,'slipers')
+  console.log(p2,p3)
+
+
+</script>
