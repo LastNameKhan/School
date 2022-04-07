@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let amar = {
+        skill:"sing",
+        place:"goa"
+    }
+    let akbar = {
+        skill:"chef",
+        place:"mumbai"
+    }
+    let anthony = {
+        skill:"Magician",
+        place:"Kashmir"
+    }
+    function skillshare () {
+        console.log(`Amar can ${this.skill}`)
+    }
+    skillshare.call(akbar) // we can pass here the object name whose skill we want
+
+</script>
