@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Nearest Neighbour left side Element</h3>
+  </body>
+</html>
+<script>
+ var arr = [39,27,11,4,24,32,32,1]
+ var ans = [];
+ ans[0] = -1
+ var top = -1;
+ var stack = [];
+ for(var i = 0;i<arr.length;i++)
+ {
+   while(stack.length>0&&stack[top]>=arr[i])
+   {
+     stack.pop()
+     top--;
+   }
+   if(stack.length == 0)
+   {
+     ans[i] = -1;
+   }
+   else if(stack[top]<=arr[i])
+   {
+     ans[i] = stack[top]
+   }
+   else{
+   stack.push(arr[i])
+   top++;
+   }
+ }
+ console.log(ans)
+ console.log(stack)
+
+//  for(var i = 1;i<arr.length-1;i++)
+//  {
+//    var flag = false;
+//    for(var j = i-1;j>=0;j--)
+//    {
+//      if(arr[j]<arr[i])
+//      {
+//        ans[i]=arr[j]
+//        flag == true;
+//        break;
+//      }
+//    }
+//    if(flag == false)
+//    {
+//      ans.push(ans[0])
+//    }
+//  }
+//  console.log(ans)
+
+</script>
